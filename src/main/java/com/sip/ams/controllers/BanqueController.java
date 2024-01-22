@@ -43,6 +43,14 @@ public class BanqueController { //un controlleur
 		
 		return "banque/detailsBanque";  //cette action retourne une View situé sous templates/banque/detailsBanque.html	
 	}
+	
+	@RequestMapping("/stagiaires")
+	public String listeStagiaires(Model model)
+	{
+		String noms[] = {"Fatima","Teddy","Jocelyn","Ahmed","Anne","Afef","Benoît","Pierre","Abdelleh","Ismail","Ibtissem","Rahma","Ayda","Hu","Andrei"}; 
+		model.addAttribute("noms", noms);
+		return "banque/stagiaires";
+	}
 
 
 }
