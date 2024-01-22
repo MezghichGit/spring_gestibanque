@@ -1,5 +1,8 @@
 package com.sip.ams.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,6 +53,22 @@ public class BanqueController { //un controlleur
 		String noms[] = {"Fatima","Teddy","Jocelyn","Ahmed","Anne","Afef","Benoît","Pierre","Abdelleh","Ismail","Ibtissem","Rahma","Ayda","Hu","Andrei"}; 
 		model.addAttribute("noms", noms);
 		return "banque/stagiaires";
+	}
+	
+	@RequestMapping("/banques")
+	public String listeBanques(Model model)
+	{
+		List<Banque> banques = new ArrayList<>();
+		Banque b1 = new Banque("Boursorama",100000,"Bordeaux, France");
+		Banque b2 = new Banque("Nickel",50000,"Nantes, France");
+		Banque b3 = new Banque("BNP",180000,"Paris, France");
+		
+		banques.add(b1);
+		banques.add(b2);
+		banques.add(b3);
+		
+		model.addAttribute("banques", banques);
+		return "banque/banques";
 	}
 
 
