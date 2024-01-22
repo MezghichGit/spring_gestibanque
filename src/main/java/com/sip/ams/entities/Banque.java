@@ -4,6 +4,7 @@ public class Banque {
 	private String nom;
 	private double solde;
 	private String adresse;
+	
 	public String getNom() {
 		return nom;
 	}

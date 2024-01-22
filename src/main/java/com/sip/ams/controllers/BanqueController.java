@@ -30,14 +30,16 @@ public class BanqueController { //un controlleur
 	//@ResponseBody
 	public String detailsBanque(Model model)
 	{
-		//Banque banque = new Banque("Boursorama",100000,"Paris, France");
+		
 		//return "<h3 align=center>"+banque.toString()+"</h3>";
 		String centre = "Global Knowledge";
 		model.addAttribute("centreJava", centre);
 		
 		String formateur = "Mohamed Amine MEZGHICH";
 		
-		model.addAttribute("trainer", formateur);
+		model.addAttribute("formateur", formateur);
+		Banque banque = new Banque("Boursorama",100000,"Paris, France");
+		model.addAttribute("banque", banque);
 		
 		return "banque/detailsBanque";  //cette action retourne une View situé sous templates/banque/detailsBanque.html	
 	}
