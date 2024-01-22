@@ -1,6 +1,7 @@
 package com.sip.ams.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,12 +26,19 @@ public class BanqueController { //un controlleur
 		return "<h2 align=center>Une formation Spring à GK</h2>";
 	}
 	
-	@RequestMapping("/details")
+	@RequestMapping("/details")  //1
 	//@ResponseBody
-	public String detailsBanque()
+	public String detailsBanque(Model model)
 	{
 		//Banque banque = new Banque("Boursorama",100000,"Paris, France");
 		//return "<h3 align=center>"+banque.toString()+"</h3>";
+		String centre = "Global Knowledge";
+		model.addAttribute("centreJava", centre);
+		
+		String formateur = "Mohamed Amine MEZGHICH";
+		
+		model.addAttribute("trainer", formateur);
+		
 		return "banque/detailsBanque";  //cette action retourne une View situé sous templates/banque/detailsBanque.html	
 	}
 
