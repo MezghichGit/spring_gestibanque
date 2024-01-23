@@ -29,6 +29,9 @@ public class Banque {
 		this.solde = solde;
 		this.adresse = adresse;
 	}
+	public Banque() {
+		
+	}
 	@Override
 	public String toString() {
 		return "Banque [nom=" + nom + ", solde=" + solde + ", adresse=" + adresse + "]";

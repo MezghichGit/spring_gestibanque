@@ -17,8 +17,8 @@ Pour ajouter une nouvelle banque clique ici : <a class="btn btn-primary" th:href
 		 <td  th:text="${banque.nom}"></td>
 		 <td  th:text="${banque.solde}"></td>
 		 <td  th:text="${banque.adresse}"></td>
-		 <td><a th:href="@{/deleteBanque/{nomB}(nomB=${banque.nom})}" class="btn btn-danger">Supprimer</a></td>
-		 <td><a href="#" class="btn btn-warning">Modifier</a></td>
+		 <td><a th:href="@{/banques/deleteBanque/{nomB}(nomB=${banque.nom})}" class="btn btn-danger">Supprimer</a></td>
+		 <td><a th:href="@{/banques/updateBanque/{nomB}(nomB=${banque.nom})}" class="btn btn-warning">Modifier</a></td>
 	</tr>
 	
 </table>

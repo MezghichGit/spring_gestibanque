@@ -115,6 +115,51 @@ public class BanqueController { //un controlleur
 		banques.remove(targetBanque);
 		return "redirect:../banques";
 	}
+	
+	
+	@GetMapping("/updateBanque/{nomBanque}")
+	//@ResponseBody
+	public String updateBanque(@PathVariable("nomBanque") String nomBanque, Model model)
+	{
+		Banque targetBanque=null;
+		for(Banque banque : banques)
+		{
+			if (banque.getNom().equals(nomBanque))
+			{
+				targetBanque = banque;
+				
+			}
+		}
+		model.addAttribute("nomBanque", targetBanque.getNom());
+		model.addAttribute("soldeBanque", targetBanque.getSolde());
+		model.addAttribute("adresseBanque", targetBanque.getAdresse());
+		return "banque/editBanque";
+	}
+	
+	@PostMapping("/updateBanque")
+	//@ResponseBody
+	public String saveBanqueAfterUpdate(
+			@RequestParam("nomBanque")String nomB, 
+			@RequestParam("capitalBanque")double capB,
+			@RequestParam("adresseBanque")String adrB
+			)
+	{
+		Banque targetBanque=null;
+		for(Banque banque : banques)
+		{
+			if (banque.getNom().equals(nomB))
+			{
+				targetBanque = banque;
+				
+			}
+		}
+		targetBanque.setNom(nomB);
+		targetBanque.setSolde(capB);
+		targetBanque.setAdresse(adrB);
+		
+		return "redirect:list";
+	}
+
 
 
 }
