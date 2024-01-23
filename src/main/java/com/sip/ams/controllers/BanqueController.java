@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sip.ams.entities.Banque;
 
 @Controller // Annotation pour rendre la classe comme un controlleur
+@RequestMapping("/banques")
 public class BanqueController { //un controlleur
 	
 	static List<Banque> banques = new ArrayList<>();
@@ -72,20 +73,20 @@ public class BanqueController { //un controlleur
 		return "banque/stagiaires";
 	}
 	
-	@RequestMapping("/banques")
+	@RequestMapping("/list")
 	public String listeBanques(Model model)
 	{
 		model.addAttribute("banques", banques);
 		return "banque/banques";
 	}
 	
-	@GetMapping("/addBanque") // pour les balises <a>
+	@GetMapping("/add") // pour les balises <a>
 	public String formBanque()
 	{
 		return "banque/formBanque.html";
 	}
 	
-	@PostMapping("/addBanque")  // pour les formulaires en mode post
+	@PostMapping("/add")  // pour les formulaires en mode post
 	//@ResponseBody
 	public String saveBanque(
 			@RequestParam("nomBanque")String nomB, 
