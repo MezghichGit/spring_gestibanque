@@ -6,8 +6,10 @@
 	<li th:each="banque:${banques}"  th:text="${banque.nom}+'-'+${banque.solde}+'-'+${banque.adresse}"></li>
 	<li th:each="banque:${banques}"  th:text="${banque}"></li>
 </ul>
-
-<h3 align="center" style="background-color: brown;">Affichage dans un tableau</h3>
+Pour ajouter une nouvelle banque clique ici : <a class="btn btn-primary" th:href="@{/addBanque}">Ajouter Banque</a>
+<br/>
+<br/>
+<h3 align="center" style="background-color: brown;">Liste des banques</h3>
 
 <table border="4" align="center"  class="table table-dark">
 	<tr><th>Nom Banque</th><th>Capital Banque</th><th>Adresse Banque</th></tr>
