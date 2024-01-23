@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -91,13 +92,28 @@ public class BanqueController { //un controlleur
 			@RequestParam("capitalBanque")double capB,
 			@RequestParam("adresseBanque")String adrB)
 	{
-		//return "banque/formBanque.html";
+		
 		Banque banque = new Banque(nomB,capB,adrB);
 		banques.add(banque);
-		//return banque.toString();
 		return "redirect:banques"; // ici on met la route de l'action pour faire une redirection
 	}
 
+	@GetMapping("/deleteBanque/{nomBanque}")
+	//@ResponseBody
+	public String deleteBanque(@PathVariable("nomBanque") String nomBanque)
+	{
+		Banque targetBanque=null;
+		for(Banque banque : banques)
+		{
+			if (banque.getNom().equals(nomBanque))
+			{
+				targetBanque = banque;
+				
+			}
+		}
+		banques.remove(targetBanque);
+		return "redirect:../banques";
+	}
 
 
 }
