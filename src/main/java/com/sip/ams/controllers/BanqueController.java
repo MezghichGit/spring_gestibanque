@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -72,11 +73,20 @@ public class BanqueController { //un controlleur
 		return "banque/banques";
 	}
 	
-	@GetMapping("/addBanque")
+	@GetMapping("/addBanque") // pour les balises <a>
 	public String formBanque()
 	{
 		return "banque/formBanque.html";
 	}
+	
+	@PostMapping("/addBanque")  // pour les formulaires en mode post
+	@ResponseBody
+	public String saveBanque()
+	{
+		//return "banque/formBanque.html";
+		return "SaveBanque";
+	}
+
 
 
 }

@@ -1,4 +1,17 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <h1 align="center">Les banque de GK, Cursus Java, Promo 2024</h1>
 
 <h3 align="center" style="background-color: brown;">Ajouter une nouvelle Banque</h3>
+
+<div style="width: 50%; margin-left: 20%;">
+	<form method="post" th:action="@{/addBanque}">
+		<label>Nom Banque</label> <input type="text" name="nomBanque" class="form-control" />
+		<br />
+		<label>Capital Banque</label> <input type="number" name="capitalBanque" class="form-control" />
+		<br />
+		<label>Adresse Banque</label> <input type="text" name="adresseBanque" class="form-control" />
+		<br />
+		<input type="submit" value="Ajouter" class="btn btn-primary"/>
+	</form>
+</div>
