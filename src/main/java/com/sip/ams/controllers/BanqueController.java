@@ -8,12 +8,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sip.ams.entities.Banque;
 
 @Controller // Annotation pour rendre la classe comme un controlleur
 public class BanqueController { //un controlleur
+	
+	static List<Banque> banques = new ArrayList<>();
+	
+	//bloc static s'exécute lors de l'invocation de la classe BanqueController
+	static {
+		Banque b1 = new Banque("Boursorama",100000,"Bordeaux, France");
+		Banque b2 = new Banque("Nickel",50000,"Nantes, France");
+		Banque b3 = new Banque("BNP",180000,"Paris, France");
+		
+		banques.add(b1);
+		banques.add(b2);
+		banques.add(b3);
+	}
 	
 	@RequestMapping("/hello")
 	@ResponseBody // => retourner le result entre les "" sur le navigateur
@@ -60,15 +74,6 @@ public class BanqueController { //un controlleur
 	@RequestMapping("/banques")
 	public String listeBanques(Model model)
 	{
-		List<Banque> banques = new ArrayList<>();
-		Banque b1 = new Banque("Boursorama",100000,"Bordeaux, France");
-		Banque b2 = new Banque("Nickel",50000,"Nantes, France");
-		Banque b3 = new Banque("BNP",180000,"Paris, France");
-		
-		banques.add(b1);
-		banques.add(b2);
-		banques.add(b3);
-		
 		model.addAttribute("banques", banques);
 		return "banque/banques";
 	}
@@ -80,11 +85,17 @@ public class BanqueController { //un controlleur
 	}
 	
 	@PostMapping("/addBanque")  // pour les formulaires en mode post
-	@ResponseBody
-	public String saveBanque()
+	//@ResponseBody
+	public String saveBanque(
+			@RequestParam("nomBanque")String nomB, 
+			@RequestParam("capitalBanque")double capB,
+			@RequestParam("adresseBanque")String adrB)
 	{
 		//return "banque/formBanque.html";
-		return "SaveBanque";
+		Banque banque = new Banque(nomB,capB,adrB);
+		banques.add(banque);
+		//return banque.toString();
+		return "redirect:banques"; // ici on met la route de l'action pour faire une redirection
 	}
 
 

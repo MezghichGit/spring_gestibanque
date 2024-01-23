@@ -6,11 +6,11 @@
 
 <div style="width: 50%; margin-left: 20%;">
 	<form method="post" th:action="@{/addBanque}">
-		<label>Nom Banque</label> <input type="text" name="nomBanque" class="form-control" />
+		<label for="nb">Nom Banque</label> <input id="nb" type="text" name="nomBanque" class="form-control" />
 		<br />
-		<label>Capital Banque</label> <input type="number" name="capitalBanque" class="form-control" />
+		<label for="cb">Capital Banque</label> <input id="cb" type="number" name="capitalBanque" class="form-control" />
 		<br />
-		<label>Adresse Banque</label> <input type="text" name="adresseBanque" class="form-control" />
+		<label for="ab">Adresse Banque</label> <input id="ab" type="text" name="adresseBanque" class="form-control" />
 		<br />
 		<input type="submit" value="Ajouter" class="btn btn-primary"/>
 	</form>
